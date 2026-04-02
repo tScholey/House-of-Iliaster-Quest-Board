@@ -363,6 +363,49 @@
     font-style: italic;
   }
 
+  /* ── Publish / token ─────────────────────────────────────────────────── */
+  .publish-btn {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.82rem;
+    padding: 0.25rem 0.9rem;
+    border: 1px solid var(--gold-dark);
+    background: var(--parch-dark);
+    color: var(--ink);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .publish-btn:hover { background: var(--parch-mid); }
+  .publish-btn:disabled { opacity: 0.5; cursor: default; }
+  .token-panel {
+    display: none;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem 1rem;
+    background: var(--dm-bg);
+    border: 1px solid var(--dm-border);
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .token-panel label { font-size: 0.82rem; color: var(--ink-mid); white-space: nowrap; }
+  .token-panel input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--parch);
+    color: var(--ink);
+    font-family: monospace;
+    font-size: 0.82rem;
+  }
+  .token-note { font-size: 0.75rem; color: var(--ink-light); font-style: italic; width: 100%; }
+  #publish-status {
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-left: 0.4rem;
+  }
+
   @media (max-width: 600px) {
     .board-frame { padding: 1.2rem 1rem 1.8rem; }
     .quest-grid { grid-template-columns: 1fr; }
@@ -409,10 +452,20 @@
         <option value="completed">Completed</option>
       </select>
       <span class="count-note" id="count-note"></span>
+      <button class="publish-btn" id="publish-btn" onclick="publishToBoard()">↑ Publish to Board</button>
+      <span id="publish-status"></span>
+      <button class="dm-btn" onclick="toggleTokenPanel()" style="margin-left:auto">⚙ Token</button>
       <a class="back-link" href="index.html">← Player board</a>
     </div>
+    <div class="token-panel" id="token-panel">
+      <label for="gh-token-input">GitHub token:</label>
+      <input type="password" id="gh-token-input" placeholder="github_pat_…" autocomplete="off">
+      <button class="dm-btn" onclick="saveToken()">Save</button>
+      <button class="dm-btn" onclick="clearToken()">Clear</button>
+      <span class="token-note">Fine-grained PAT with Contents: Read &amp; Write on this repo. Saved in your browser only.</span>
+    </div>
     <div id="board"></div>
-    <div class="board-footer">Changes save to this browser. To update the live board, edit quests.json and redeploy.</div>
+    <div class="board-footer">Changes save locally. Click <em>Publish to Board</em> to push to the live player board.</div>
   </div>
 </div>
 
@@ -645,6 +698,87 @@ fetch('quests.json')
   .catch(() => {
     quests = [];
   });
+
+// ── Token panel ────────────────────────────────────────────────────────
+window.toggleTokenPanel = function() {
+  const panel = document.getElementById('token-panel');
+  const showing = panel.style.display === 'flex';
+  panel.style.display = showing ? 'none' : 'flex';
+  if (!showing) {
+    const stored = localStorage.getItem('gh_token') || '';
+    document.getElementById('gh-token-input').value = stored ? '••••••••' : '';
+  }
+};
+window.saveToken = function() {
+  const val = document.getElementById('gh-token-input').value.trim();
+  if (val && val !== '••••••••') localStorage.setItem('gh_token', val);
+  document.getElementById('token-panel').style.display = 'none';
+  setStatus('Token saved.');
+};
+window.clearToken = function() {
+  localStorage.removeItem('gh_token');
+  document.getElementById('gh-token-input').value = '';
+  setStatus('Token cleared.');
+};
+
+// ── Publish ─────────────────────────────────────────────────────────────
+function setStatus(msg, isErr) {
+  const el = document.getElementById('publish-status');
+  el.textContent = msg;
+  el.style.color = isErr ? 'var(--red-ink)' : 'var(--ink-light)';
+}
+
+window.publishToBoard = async function() {
+  const token = localStorage.getItem('gh_token');
+  if (!token) {
+    document.getElementById('token-panel').style.display = 'flex';
+    setStatus('Enter a GitHub token first.', true);
+    return;
+  }
+
+  const btn = document.getElementById('publish-btn');
+  btn.disabled = true;
+  setStatus('Publishing…');
+
+  // Merge status/hidden overrides into the quest objects
+  const toPublish = quests.map(q => ({
+    ...q,
+    status: statuses[q.id] !== undefined ? statuses[q.id] : (q.status || 'available'),
+    hidden: hidden[q.id]  !== undefined ? hidden[q.id]  : (q.hidden  || false)
+  }));
+
+  const REPO = 'tScholey/House-of-Iliaster-Quest-Board';
+  const API  = `https://api.github.com/repos/${REPO}/contents/quests.json`;
+  const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
+
+  try {
+    // 1. Get current SHA
+    const metaResp = await fetch(API, { headers });
+    if (!metaResp.ok) throw new Error(`GitHub API ${metaResp.status}: ${await metaResp.text()}`);
+    const { sha } = await metaResp.json();
+
+    // 2. Encode content (handle non-ASCII safely)
+    const json = JSON.stringify(toPublish, null, 2);
+    const bytes = new TextEncoder().encode(json);
+    let binary = '';
+    bytes.forEach(b => binary += String.fromCharCode(b));
+    const content = btoa(binary);
+
+    // 3. Commit
+    const putResp = await fetch(API, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ message: 'Update quest board via DM screen', content, sha })
+    });
+    if (!putResp.ok) throw new Error(`GitHub API ${putResp.status}: ${await putResp.text()}`);
+
+    setStatus('Published. Live board updates in ~1 min.');
+  } catch (err) {
+    setStatus(err.message, true);
+  } finally {
+    btn.disabled = false;
+  }
+};
 
 // Allow Enter on password field
 document.getElementById('pw').addEventListener('keydown', e => {
