@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Iliaster — Quest Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #2a1a08;
+    --ink-mid:   #5c3a1e;
+    --ink-light: #8b5e3c;
+    --gold:      #b8860b;
+    --gold-dark: #8b6508;
+    --gold-pale: #f5e6c0;
+    --parch:     #fdf3dc;
+    --parch-mid: #f5e4b8;
+    --parch-dark:#e8d49a;
+    --border:    #c9a84c;
+    --red-ink:   #8b1a1a;
+    --seal:      #7a1c1c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1c1008;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, #2e1a08 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, #261408 0%, transparent 60%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 4rem;
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--ink);
+  }
+
+  /* ── Header ─────────────────────────────────────────────────────────── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .header-rule {
+    width: 340px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 0.9rem;
+  }
+  .guild-name {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    margin-bottom: 0.3rem;
+  }
+  .board-title {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: var(--parch-mid);
+    letter-spacing: 0.08em;
+    font-style: italic;
+  }
+  .header-ornament {
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
+    margin-top: 0.6rem;
+    opacity: 0.7;
+  }
+
+  /* ── Board frame ─────────────────────────────────────────────────────── */
+  .board-frame {
+    background: var(--parch);
+    border: 2px solid var(--border);
+    box-shadow:
+      inset 0 0 40px rgba(184,134,11,0.08),
+      0 4px 30px rgba(0,0,0,0.7),
+      0 0 0 6px #1c1008,
+      0 0 0 8px #2e1a08;
+    width: 100%;
+    max-width: 1100px;
+    padding: 2rem 2rem 2.5rem;
+    position: relative;
+  }
+
+  .board-frame::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(184,134,11,0.25);
+    pointer-events: none;
+  }
+
+  /* Corner ornaments */
+  .board-frame::after {
+    content: '✦';
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    background: var(--parch);
+    padding: 0 0.6rem;
+    font-size: 1rem;
+  }
+
+  /* ── Tier header ─────────────────────────────────────────────────────── */
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .tier-rule { flex: 1; height: 1px; background: var(--parch-dark); }
+  .tier-label {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── Filter bar ──────────────────────────────────────────────────────── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--parch-dark);
+  }
+  .filter-bar select {
+    background: var(--parch-mid);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+  }
+  .filter-bar select:focus { outline: none; border-color: var(--gold); }
+  .count-note {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* ── Quest grid ──────────────────────────────────────────────────────── */
+  .quest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ── Quest card ──────────────────────────────────────────────────────── */
+  .quest-card {
+    background: var(--parch-mid);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .quest-card:hover {
+    box-shadow: 0 2px 16px rgba(184,134,11,0.25);
+    transform: translateY(-1px);
+  }
+  .quest-card.urgent { border-color: var(--red-ink); }
+  .quest-card.urgent::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red-ink);
+  }
+
+  .card-body { padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+
+  .card-title {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.4;
+    border-bottom: 1px solid var(--parch-dark);
+    padding-bottom: 0.5rem;
+  }
+
+  .card-summary {
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .expires-note {
+    font-size: 0.78rem;
+    color: var(--red-ink);
+    font-style: normal;
+    letter-spacing: 0.01em;
+  }
+
+  .card-meta {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--parch-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .meta-row { display: flex; gap: 0.5rem; font-size: 0.82rem; line-height: 1.45; }
+  .meta-label { color: var(--gold-dark); min-width: 62px; font-weight: 600; letter-spacing: 0.03em; }
+  .meta-val { color: var(--ink); }
+  .meta-reward { color: var(--ink-mid); font-style: italic; }
+
+  .card-footer {
+    padding: 0.6rem 1.1rem;
+    border-top: 1px solid var(--parch-dark);
+    background: rgba(184,134,11,0.04);
+  }
+  .lk-link {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--gold-dark);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--parch-dark);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .lk-link:hover { color: var(--ink); border-color: var(--ink); }
+  .lk-link::before { content: '⟶ '; font-size: 0.7rem; }
+
+  /* ── Empty state ─────────────────────────────────────────────────────── */
+  .empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-style: italic;
+    color: var(--ink-light);
+    font-size: 0.95rem;
+  }
+
+  /* ── Footer ──────────────────────────────────────────────────────────── */
+  .board-footer {
+    text-align: center;
+    margin-top: 1.8rem;
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+  .board-footer a {
+    color: var(--gold-dark);
+    text-decoration: none;
+    margin-left: 0.8rem;
+  }
+  .board-footer a:hover { color: var(--ink); }
+
+  /* ── Responsive ──────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .board-frame { padding: 1.2rem 1rem 1.8rem; }
+    .quest-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-rule"></div>
+  <div class="guild-name">House of Iliaster</div>
+  <div class="board-title">Public Contract Board</div>
+  <div class="header-ornament">— ✦ —</div>
+</header>
+
+<main class="board-frame">
+  <div class="filter-bar">
+    <select id="filter-tier" onchange="render()">
+      <option value="all">All tiers</option>
+      <option value="rat">Rat Tier</option>
+      <option value="ram">Ram Tier</option>
+      <option value="lion">Lion Tier</option>
+      <option value="dragon">Dragon Tier</option>
+      <option value="chimera">Chimera Tier</option>
+    </select>
+    <span class="count-note" id="count-note"></span>
+  </div>
+  <div id="board"></div>
+  <div class="board-footer">
+    Updated at each noon posting &nbsp;·&nbsp; Dorel city-state
+    <a href="dm.html">⚿ Guild Records</a>
+  </div>
+</main>
+
+<script>
+const TIERS = [
+  { key: 'rat',     label: 'Rat Tier' },
+  { key: 'ram',     label: 'Ram Tier' },
+  { key: 'lion',    label: 'Lion Tier' },
+  { key: 'dragon',  label: 'Dragon Tier' },
+  { key: 'chimera', label: 'Chimera Tier' }
+];
+
+let quests = [];
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function cardHTML(q) {
+  const urgent = q.timeSensitive ? ' urgent' : '';
+  const expires = q.timeSensitive && q.expires
+    ? `<div class="expires-note">Expires: ${esc(q.expires)}</div>` : '';
+  const lkLink = q.lkUrl
+    ? `<div class="card-footer"><a class="lk-link" href="${esc(q.lkUrl)}" target="_blank">View in Guild Records</a></div>` : '';
+  return `<div class="quest-card${urgent}">
+    <div class="card-body">
+      <div class="card-title">${esc(q.title)}</div>
+      <div class="card-summary">${esc(q.summary)}</div>
+      ${expires}
+      <div class="card-meta">
+        <div class="meta-row"><span class="meta-label">Contact</span><span class="meta-val">${esc(q.contact)}</span></div>
+        <div class="meta-row"><span class="meta-label">Duration</span><span class="meta-val">${esc(q.length)}</span></div>
+        <div class="meta-row"><span class="meta-label">Completion</span><span class="meta-val">${esc(q.completion)}</span></div>
+        <div class="meta-row"><span class="meta-label">Reward</span><span class="meta-reward">${esc(q.reward)}</span></div>
+      </div>
+    </div>
+    ${lkLink}
+  </div>`;
+}
+
+function render() {
+  const filterTier = document.getElementById('filter-tier').value;
+  const board = document.getElementById('board');
+  const visible = quests.filter(q => q.status === 'available' && !q.hidden);
+  const filtered = visible.filter(q => filterTier === 'all' || q.tier === filterTier);
+
+  document.getElementById('count-note').textContent =
+    filtered.length === 1 ? '1 contract posted' : `${filtered.length} contracts posted`;
+
+  if (filtered.length === 0) {
+    board.innerHTML = '<div class="empty">No contracts currently posted.</div>';
+    return;
+  }
+
+  let html = '';
+  for (const tier of TIERS) {
+    const tq = filtered.filter(q => q.tier === tier.key);
+    if (!tq.length) continue;
+    html += `<div class="tier-header">
+      <div class="tier-rule"></div>
+      <div class="tier-label">${tier.label}</div>
+      <div class="tier-rule"></div>
+    </div>
+    <div class="quest-grid" style="margin-bottom:2rem">${tq.map(cardHTML).join('')}</div>`;
+  }
+  board.innerHTML = html;
+}
+
+fetch('quests.json')
+  .then(r => r.json())
+  .then(data => { quests = data; render(); })
+  .catch(() => {
+    document.getElementById('board').innerHTML =
+      '<div class="empty">The board could not be reached. Please try again shortly.</div>';
+  });
+</script>
+</body>
+</html>
