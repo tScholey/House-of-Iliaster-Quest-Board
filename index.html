@@ -231,6 +231,15 @@
     border-bottom: 1px solid var(--parch-dark);
     padding-bottom: 0.5rem;
   }
+  .title-link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--parch-dark);
+  }
+  .title-link:hover {
+    color: var(--gold-dark);
+    border-bottom-color: var(--gold-dark);
+  }
 
   .card-summary {
     font-size: 0.9rem;
@@ -259,22 +268,6 @@
   .meta-val { color: var(--ink); }
   .meta-reward { color: var(--ink-mid); font-style: italic; }
 
-  .card-footer {
-    padding: 0.55rem 1.1rem;
-    border-top: 1px solid var(--parch-dark);
-    background: rgba(0,0,0,0.04);
-  }
-  .lk-link {
-    display: inline-block;
-    font-size: 0.78rem;
-    color: var(--gold-dark);
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    border-bottom: 1px solid var(--parch-dark);
-    padding-bottom: 1px;
-  }
-  .lk-link:hover { color: var(--ink); border-color: var(--ink-light); }
-  .lk-link::before { content: '» '; }
 
   /* ── Empty state ─────────────────────────────────────────────────────── */
   .empty {
@@ -358,11 +351,12 @@ function cardHTML(q) {
   const urgent = q.timeSensitive ? ' urgent' : '';
   const expires = q.timeSensitive && q.expires
     ? `<div class="expires-note">Expires: ${esc(q.expires)}</div>` : '';
-  const lkLink = q.lkUrl
-    ? `<div class="card-footer"><a class="lk-link" href="${esc(q.lkUrl)}" target="_blank">View in Guild Records</a></div>` : '';
+  const titleInner = q.lkUrl
+    ? `<a class="title-link" href="${esc(q.lkUrl)}" target="_blank">${esc(q.title)}</a>`
+    : esc(q.title);
   return `<div class="quest-card${urgent}">
     <div class="card-body">
-      <div class="card-title">${esc(q.title)}</div>
+      <div class="card-title">${titleInner}</div>
       <div class="card-summary">${esc(q.summary)}</div>
       ${expires}
       <div class="card-meta">
@@ -372,7 +366,6 @@ function cardHTML(q) {
         <div class="meta-row"><span class="meta-label">Reward</span><span class="meta-reward">${esc(q.reward)}</span></div>
       </div>
     </div>
-    ${lkLink}
   </div>`;
 }
 
