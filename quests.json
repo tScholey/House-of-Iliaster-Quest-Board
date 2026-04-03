@@ -10,7 +10,7 @@
     "length": "Single day",
     "timeSensitive": true,
     "expires": "Contract lapses when the Menagerie leaves Dorel",
-    "lkUrl": " https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/mk5zf7z/",
+    "lkUrl": " https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/lmk5zf7z/",
     "status": "available",
     "hidden": false
   },
@@ -55,7 +55,7 @@
     "length": "Single night",
     "timeSensitive": false,
     "expires": "",
-    "lkUrl": "https://app.legendkeeper.com/a/worlds/cmk5vt9bw62y10jo1857n5cmk/rs7a3mvm/",
+    "lkUrl": "https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/rs7a3mvm/",
     "status": "available",
     "hidden": false
   }
