@@ -105,21 +105,6 @@
     "hidden": false
   },
   {
-    "id": "C1-013",
-    "tier": "ram",
-    "title": "In Response to the Gruntenwald Forge Sabotage",
-    "summary": "Three of Gruntenwald's smithies have been struck by what the masters describe as deliberate interference - tools displaced, furnaces tampered with, one apprentice injured. The culprit has not been identified. Local suspicion is running hot and the masters are concerned the situation will escalate before it is resolved. A party is required to investigate and bring a definitive answer before the forge district takes matters into its own hands.",
-    "completion": "The responsible party identified and turned over, or otherwise removed from the situation.",
-    "reward": "50gp, with a further 15gp if the findings can be fully evidenced",
-    "contact": "[Senior forge master], Gruntenwald Smithing Guild",
-    "length": "Two to three days",
-    "timeSensitive": true,
-    "expires": "Contract lapses if violence breaks out among the forge district before resolution",
-    "lkUrl": "",
-    "status": "available",
-    "hidden": false
-  },
-  {
     "id": "C1-014",
     "tier": "lion",
     "title": "In Service of the Tamea Municipal Authority",
