@@ -105,21 +105,6 @@
     "hidden": false
   },
   {
-    "id": "C1-013",
-    "tier": "ram",
-    "title": "In Response to the Gruntenwald Forge Sabotage",
-    "summary": "Three of Gruntenwald's smithies have been struck by what the masters describe as deliberate interference — tools displaced, furnaces tampered with, one apprentice injured. The culprit has not been identified. Local suspicion is running hot and the masters are concerned the situation will escalate before it is resolved. A party is required to investigate and bring a definitive answer before the forge district takes matters into its own hands.",
-    "completion": "The responsible party identified and turned over, or otherwise removed from the situation.",
-    "reward": "50gp, with a further 15gp if the findings can be fully evidenced",
-    "contact": "[Senior forge master], Gruntenwald Smithing Guild",
-    "length": "Two to three days",
-    "timeSensitive": true,
-    "expires": "Contract lapses if violence breaks out among the forge district before resolution",
-    "lkUrl": "",
-    "status": "available",
-    "hidden": false
-  },
-  {
     "id": "C1-014",
     "tier": "lion",
     "title": "In Service of the Tamea Municipal Authority",
@@ -130,21 +115,6 @@
     "length": "One to two weeks",
     "timeSensitive": false,
     "expires": "",
-    "lkUrl": "",
-    "status": "available",
-    "hidden": false
-  },
-  {
-    "id": "C1-015",
-    "tier": "lion",
-    "title": "In Aid of Tovel — the Collapsed Waystation",
-    "summary": "The only waystation on the road between Tovel and Stormwell has collapsed into a sinkhole, stranding a group of travellers and cutting off the route for supply wagons. A rescue and recovery operation is needed — the travellers must be extracted, and a temporary route assessment completed so that Stormwell's harbour district can continue receiving overland cargo. The sinkhole's cause is not yet known.",
-    "completion": "All stranded travellers safely extracted and a viable alternative route confirmed in writing.",
-    "reward": "90gp, with an additional 20gp if the sinkhole's cause is determined and documented",
-    "contact": "[Waystation authority representative], Stormwell Harbour Office",
-    "length": "Four to six days",
-    "timeSensitive": true,
-    "expires": "Contract lapses if the stranded travellers are not reached within seven days of posting",
     "lkUrl": "",
     "status": "available",
     "hidden": false
