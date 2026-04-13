@@ -1,0 +1,15 @@
+{
+  "id": "C1-003",
+  "tier": "rat",
+  "title": "Care of The Family Pintfoot",
+  "summary": "A funeral urn belonging to the Pintfoot family has vanished from the Dorel Delivery Company. The company has since turned unresponsive. A thorough investigation report is required; physical recovery is welcomed but not required.",
+  "completion": "Full investigation report submitted to Garfield Pintfoot.",
+  "reward": "5gp in gemstones, with additional payment for physical recovery",
+  "contact": "Garfield Pintfoot",
+  "length": "One to two days",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/p8mpe9wx/",
+  "status": "available",
+  "hidden": false
+}

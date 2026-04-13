@@ -1,0 +1,15 @@
+{
+  "id": "C1-010",
+  "tier": "ram",
+  "title": "In Aid of the Corborough Fishing Collective",
+  "summary": "The village of Corborough has seen its nets come up empty for three weeks running. The fishermen report something large moving in the shallows at night - felt more than seen. Trade with Dorel is already affected. The Collective asks for the matter to be investigated and resolved before the season is lost.",
+  "completion": "The threat to Corborough's fishing grounds is identified and dealt with.",
+  "reward": "40gp, plus a standing arrangement for discounted passage along the coastal route",
+  "contact": "Colin Pickeasy, Corborough Fishing Collective",
+  "length": "Two to three days",
+  "timeSensitive": true,
+  "expires": "Contract lapses at the close of the fishing season",
+  "lkUrl": "",
+  "status": "available",
+  "hidden": false
+}

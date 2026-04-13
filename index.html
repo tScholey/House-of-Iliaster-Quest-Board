@@ -387,8 +387,12 @@ function render() {
   board.innerHTML = html;
 }
 
-fetch('quests.json')
+fetch('quests/index.json')
   .then(r => r.json())
+  .then(ids => {
+    const promises = ids.map(id => fetch(`quests/${id}.json`).then(r => r.json()));
+    return Promise.all(promises);
+  })
   .then(data => { quests = data; render(); })
   .catch(() => {
     document.getElementById('board').innerHTML =

@@ -1,0 +1,15 @@
+{
+  "id": "C1-002",
+  "tier": "rat",
+  "title": "In Service of His Grace Lord Tersh",
+  "summary": "Lord Tersh requests discreet guild presence at his Manor Fundraiser for the Dorel Artificer Guild. The guild has been specifically asked for. Conduct and discretion are expected throughout.",
+  "completion": "Gala concludes without incident.",
+  "reward": "15sp per member, plus Artificer Vouchers valued at 10gp each",
+  "contact": "Abington Steel, Head of Security",
+  "length": "Single evening",
+  "timeSensitive": true,
+  "expires": "The Gala is a fixed date",
+  "lkUrl": "https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/r30xus5j/",
+  "status": "available",
+  "hidden": false
+}

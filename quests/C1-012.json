@@ -1,0 +1,15 @@
+{
+  "id": "C1-012",
+  "tier": "ram",
+  "title": "In Furtherance of the Kasparian University Wildlife Survey",
+  "summary": "A researcher based in Kasparian University requires updated survey maps of the flora and fauna immediately surrounding Dorel to the North. Previous survey teams have returned conflicting work. The assignment is to travel the area, document and sample any unusual flora, and deliver the completed charts to the researcher. The guild has charts available, see Thalassar to collect. ",
+  "completion": "Completed survey charts delivered to the researcher's correspondent in Dorel.",
+  "reward": "35gp on delivery, plus expenses for the road",
+  "contact": "Prof. Gi'lor",
+  "length": "Four to five days",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "",
+  "status": "available",
+  "hidden": false
+}

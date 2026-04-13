@@ -1,0 +1,15 @@
+{
+  "id": "C1-016",
+  "tier": "lion",
+  "title": "Reclamation Bounty - The Bracer of Amahurzha",
+  "summary": "Westward of Marriton is a cemetary, beneath a mausoleum therein is believed to be a winding crypt of the hero Amahurzha. Amahurzha is a hero from Pelorian folklore. Historians from Undervell University and the Temple of Pelor have given a shared bounty on the reclamation of his famed bracer.",
+  "completion": "Reclamation of Amahurzha's Bracer",
+  "reward": "Pelorian Sundering Blade ",
+  "contact": "High Priest Highsmith, The Historical Society of Undervell",
+  "length": "One week or more",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "",
+  "status": "available",
+  "hidden": false
+}

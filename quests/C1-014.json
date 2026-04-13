@@ -1,0 +1,15 @@
+{
+  "id": "C1-014",
+  "tier": "lion",
+  "title": "In Service of the Tamea Municipal Authority",
+  "summary": "A significant sum in public funds - collected for the expansion of Tamea's artificer quarter - has gone missing from the municipal vault. The Authority has ruled out external breach. The inquiry is therefore an internal one, requiring discretion above all else. A party from outside the city is considered preferable precisely because they carry no existing alliances within Tamea. Full cooperation from the Authority's senior staff has been pledged.",
+  "completion": "The missing funds are accounted for and the responsible party identified to the Authority's satisfaction.",
+  "reward": "120gp, plus formal commendation from the Tamea Municipal Authority",
+  "contact": "Mori Alo, Tamea Municipal Office",
+  "length": "One to two weeks",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "",
+  "status": "available",
+  "hidden": false
+}

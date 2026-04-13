@@ -1,0 +1,15 @@
+{
+  "id": "C1-001",
+  "tier": "rat",
+  "title": "In Aid of The Moving Menagerie Creature Show",
+  "summary": "Four creatures from the Moving Menagerie have escaped into the city - an Owlbear rampaging through the market district, a Blue Dragon Wyrmling loose on the rooftops, and a pack of Shadow Mastiffs in the darker streets. The Menagerie departs soon.",
+  "completion": "All creatures returned or slain.",
+  "reward": "10gp, plus 2gp per creature returned alive",
+  "contact": "Ringmaster Montigue Forceall",
+  "length": "Single day",
+  "timeSensitive": true,
+  "expires": "Contract lapses when the Menagerie leaves Dorel",
+  "lkUrl": " https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/lmk5zf7z/",
+  "status": "available",
+  "hidden": false
+}

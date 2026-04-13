@@ -1,0 +1,15 @@
+{
+  "id": "C1-004",
+  "tier": "rat",
+  "title": "Care of The House Ranstok",
+  "summary": "A Ranstok family heirloom was left in the vault of their recently sold manor, now occupied by the Hamilton family. The new owners claim all possessions left at handover. A discreet extraction is required. Damage to the heirloom voids the contract.",
+  "completion": "Heirloom returned to Arthur Ranstok.",
+  "reward": "15gp if retrieved without alerting the household",
+  "contact": "Arthur Ranstok",
+  "length": "Single night",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/rs7a3mvm/",
+  "status": "available",
+  "hidden": false
+}
