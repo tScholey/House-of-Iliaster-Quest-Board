@@ -163,5 +163,20 @@
     "lkUrl": "",
     "status": "available",
     "hidden": false
+  },
+  {
+    "id": "C1-019",
+    "tier": "rat",
+    "title": "New Quest",
+    "summary": "Description",
+    "completion": "Completion criteria",
+    "reward": "Reward",
+    "contact": "Contact",
+    "length": "Duration",
+    "timeSensitive": false,
+    "expires": "",
+    "lkUrl": "",
+    "status": "available",
+    "hidden": false
   }
 ]
