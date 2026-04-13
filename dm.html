@@ -188,7 +188,7 @@
   }
   .count-note { 
     font-size: 0.85rem; 
-    color: var(--ink-light); 
+    color: var(--red-ink); 
     font-style: italic; 
     font-family: Georgia, 'Times New Roman', serif; 
     text-shadow: 0 0 8px rgba(180,130,10,0.7), 0 0 20px rgba(180,130,10,0.4); 
@@ -218,7 +218,6 @@
     color: var(--red-ink);
     text-transform: uppercase;
     white-space: nowrap;
-    text-shadow: 0 0 8px rgba(180,130,10,0.7), 0 0 20px rgba(180,130,10,0.4);
   }
 
   /* ── Quest grid ──────────────────────────────────────────────────────── */
@@ -431,7 +430,7 @@
     text-align: center; 
     padding: 3rem 1rem; 
     font-style: italic; 
-    color: var(--ink-light); 
+    color: var(--red-ink); 
     font-size: 0.95rem; 
     font-family: 'IM Fell English', serif; 
   }
@@ -439,11 +438,10 @@
     text-align: center;
     margin-top: 1.6rem;
     font-size: 0.78rem;
-    color: var(--ink-light);
+    color: var(--red-ink);
     font-style: italic;
     border-top: 1px solid var(--parch-dark);
     padding-top: 0.8rem;
-    text-shadow: 0 0 8px rgba(180,130,10,0.7), 0 0 20px rgba(180,130,10,0.4);
   }
 
   /* ── Publish / token ─────────────────────────────────────────────────── */
@@ -489,11 +487,121 @@
     margin-left: 0.4rem;
   }
 
+  /* ── Modal overlay ──────────────────────────────────────────────────────── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-content {
+    background: var(--parch-mid);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--ink-light);
+  }
+  .modal-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-tab-btn {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    background: var(--parch);
+    border: none;
+    color: var(--ink);
+    font-family: 'IM Fell English', serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-bottom: 2px solid var(--parch);
+    transition: background 0.2s;
+  }
+  .modal-tab-btn.active {
+    background: var(--parch-mid);
+    border-bottom-color: var(--gold-dark);
+  }
+  .modal-tab-btn:hover { background: var(--parch-mid); }
+  .modal-body {
+    padding: 1rem;
+    flex: 1;
+  }
+  .modal-tab { display: none; }
+  .modal-tab.active { display: block; }
+  .modal-form-group { margin-bottom: 0.8rem; }
+  .modal-label { display: block; font-size: 0.75rem; color: var(--ink-mid); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+  .modal-input, .modal-textarea, .modal-select {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--border);
+    background: var(--parch);
+    color: var(--ink);
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+  }
+  .modal-textarea { min-height: 100px; resize: vertical; }
+  .modal-inputs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .modal-checkbox { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--ink); cursor: pointer; }
+  .modal-actions {
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+  .modal-btn {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--parch-dark);
+    color: var(--ink);
+    font-family: 'IM Fell English', serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .modal-btn:hover { background: var(--parch-mid); }
+  .modal-btn.secondary {
+    background: transparent;
+    border-color: var(--border);
+  }
+
   @media (max-width: 600px) {
     .board-frame { padding: 1.2rem 0.9rem 1.8rem; }
     .quest-grid { grid-template-columns: 1fr; }
     .quest-card:nth-child(n) { transform: none; }
     .ef-2col { grid-template-columns: 1fr; }
+    .modal-inputs-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -551,6 +659,89 @@
     </div>
     <div id="board"></div>
     <div class="board-footer">Changes save locally. Click <em>Publish to Board</em> to push to the live player board.</div>
+  </div>
+</div>
+
+<!-- Add Quest Modal -->
+<div class="modal-overlay" id="add-quest-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">Add New Quest</div>
+      <button class="modal-close" onclick="closeAddQuestModal()">✕</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="modal-tab-btn active" onclick="switchTab('manual')">Manual Entry</button>
+      <button class="modal-tab-btn" onclick="switchTab('json')">Import JSON</button>
+    </div>
+    <div class="modal-body">
+      <!-- Manual Entry Tab -->
+      <div class="modal-tab active" id="manual-tab">
+        <div class="modal-form-group">
+          <label class="modal-label">Tier</label>
+          <select class="modal-select" id="mf-tier">
+            <option value="rat">Rat Tier</option>
+            <option value="ram">Ram Tier</option>
+            <option value="lion">Lion Tier</option>
+            <option value="dragon">Dragon Tier</option>
+            <option value="chimera">Chimera Tier</option>
+          </select>
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">Title</label>
+          <input class="modal-input" id="mf-title" placeholder="Quest title">
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">Summary</label>
+          <textarea class="modal-textarea" id="mf-summary" placeholder="Player-facing description"></textarea>
+        </div>
+        <div class="modal-inputs-row">
+          <div class="modal-form-group">
+            <label class="modal-label">Contact</label>
+            <input class="modal-input" id="mf-contact" placeholder="NPC/Contact">
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-label">Reward</label>
+            <input class="modal-input" id="mf-reward" placeholder="Reward">
+          </div>
+        </div>
+        <div class="modal-inputs-row">
+          <div class="modal-form-group">
+            <label class="modal-label">Duration</label>
+            <input class="modal-input" id="mf-length" placeholder="Duration">
+          </div>
+          <div class="modal-form-group">
+            <label class="modal-label">Completion</label>
+            <input class="modal-input" id="mf-completion" placeholder="Completion criteria">
+          </div>
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">Expiry Note (optional)</label>
+          <input class="modal-input" id="mf-expires" placeholder="Time-sensitive details">
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-label">LK Records URL (optional)</label>
+          <input class="modal-input" id="mf-lkurl" placeholder="https://app.legendkeeper.com/...">
+        </div>
+        <div class="modal-form-group">
+          <label class="modal-checkbox">
+            <input type="checkbox" id="mf-timesensitive"> Time-sensitive contract
+          </label>
+        </div>
+      </div>
+
+      <!-- JSON Import Tab -->
+      <div class="modal-tab" id="json-tab">
+        <div class="modal-form-group">
+          <label class="modal-label">Paste JSON Quest Data</label>
+          <textarea class="modal-textarea" id="json-paste" placeholder='{"id":"C1-999","tier":"rat",...}' style="min-height: 300px;"></textarea>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--ink-light); margin-top: 0.5rem;">Paste a complete quest object JSON. The ID will be regenerated.</p>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeAddQuestModal()">Cancel</button>
+      <button class="modal-btn" id="submit-quest-btn" onclick="submitNewQuest()">Create Quest</button>
+    </div>
   </div>
 </div>
 
@@ -638,6 +829,16 @@ function cardHTML(q) {
   if (editing === q.id) {
     editPanel = `<div class="edit-panel">
       <div class="edit-panel-title">Edit contract</div>
+      <div class="ef-row">
+        <div class="ef-label">Tier</div>
+        <select class="ef-input" id="ef-tier">
+          <option value="rat"${q.tier === 'rat' ? ' selected' : ''}>Rat Tier</option>
+          <option value="ram"${q.tier === 'ram' ? ' selected' : ''}>Ram Tier</option>
+          <option value="lion"${q.tier === 'lion' ? ' selected' : ''}>Lion Tier</option>
+          <option value="dragon"${q.tier === 'dragon' ? ' selected' : ''}>Dragon Tier</option>
+          <option value="chimera"${q.tier === 'chimera' ? ' selected' : ''}>Chimera Tier</option>
+        </select>
+      </div>
       <div class="ef-row">
         <div class="ef-label">Title</div>
         <input class="ef-input" id="ef-title" value="${esc(q.title)}">
@@ -746,6 +947,7 @@ window.saveEdit = function(id) {
   const q = gq(id);
   if (!q) return;
   const g = k => document.getElementById(k);
+  if (g('ef-tier'))     q.tier         = g('ef-tier').value;
   if (g('ef-title'))   q.title        = g('ef-title').value;
   if (g('ef-summary')) q.summary      = g('ef-summary').value;
   if (g('ef-comp'))    q.completion   = g('ef-comp').value;
@@ -771,36 +973,106 @@ window.resetQ = function(id) {
 };
 
 window.addNewQuest = function() {
-  // Generate new ID: find max number from existing ids
-  const ids = quests.map(q => q.id);
-  const numbers = ids.map(id => parseInt(id.split('-')[1])).filter(n => !isNaN(n));
-  const maxNum = numbers.length ? Math.max(...numbers) : 0;
-  const newNum = maxNum + 1;
-  const newId = `C1-${newNum.toString().padStart(3, '0')}`;
+  document.getElementById('add-quest-modal').classList.add('active');
+};
+
+window.closeAddQuestModal = function() {
+  document.getElementById('add-quest-modal').classList.remove('active');
+  // Reset form
+  document.getElementById('mf-title').value = '';
+  document.getElementById('mf-summary').value = '';
+  document.getElementById('mf-contact').value = '';
+  document.getElementById('mf-reward').value = '';
+  document.getElementById('mf-length').value = '';
+  document.getElementById('mf-completion').value = '';
+  document.getElementById('mf-expires').value = '';
+  document.getElementById('mf-lkurl').value = '';
+  document.getElementById('mf-timesensitive').checked = false;
+  document.getElementById('json-paste').value = '';
+};
+
+window.switchTab = function(tab) {
+  // Hide all tabs
+  document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
   
-  const quest = {
-    id: newId,
-    tier: 'rat',
-    title: 'New Quest',
-    summary: 'Description',
-    completion: 'Completion criteria',
-    reward: 'Reward',
-    contact: 'Contact',
-    length: 'Duration',
-    timeSensitive: false,
-    expires: '',
-    lkUrl: '',
-    status: 'available',
-    hidden: false
-  };
-  
+  // Show selected tab
+  document.getElementById(tab + '-tab').classList.add('active');
+  event.target.classList.add('active');
+};
+
+window.submitNewQuest = function() {
+  const activeTab = document.querySelector('.modal-tab.active');
+  let quest;
+
+  if (activeTab.id === 'manual-tab') {
+    // Manual entry
+    const title = document.getElementById('mf-title').value.trim();
+    if (!title) { alert('Title is required'); return; }
+
+    // Generate new ID
+    const ids = quests.map(q => q.id);
+    const numbers = ids.map(id => parseInt(id.split('-')[1])).filter(n => !isNaN(n));
+    const maxNum = numbers.length ? Math.max(...numbers) : 0;
+    const newNum = maxNum + 1;
+    const newId = `C1-${newNum.toString().padStart(3, '0')}`;
+
+    quest = {
+      id: newId,
+      tier: document.getElementById('mf-tier').value,
+      title: title,
+      summary: document.getElementById('mf-summary').value.trim(),
+      completion: document.getElementById('mf-completion').value.trim(),
+      reward: document.getElementById('mf-reward').value.trim(),
+      contact: document.getElementById('mf-contact').value.trim(),
+      length: document.getElementById('mf-length').value.trim(),
+      timeSensitive: document.getElementById('mf-timesensitive').checked,
+      expires: document.getElementById('mf-expires').value.trim(),
+      lkUrl: document.getElementById('mf-lkurl').value.trim(),
+      status: 'available',
+      hidden: false
+    };
+  } else {
+    // JSON import
+    const jsonStr = document.getElementById('json-paste').value.trim();
+    try {
+      quest = JSON.parse(jsonStr);
+    } catch (e) {
+      alert('Invalid JSON: ' + e.message);
+      return;
+    }
+
+    // Generate new ID
+    const ids = quests.map(q => q.id);
+    const numbers = ids.map(id => parseInt(id.split('-')[1])).filter(n => !isNaN(n));
+    const maxNum = numbers.length ? Math.max(...numbers) : 0;
+    const newNum = maxNum + 1;
+    const newId = `C1-${newNum.toString().padStart(3, '0')}`;
+    quest.id = newId;
+    
+    // Ensure required fields
+    if (!quest.title) quest.title = 'Untitled Quest';
+    if (!quest.summary) quest.summary = '';
+    if (!quest.completion) quest.completion = '';
+    if (!quest.reward) quest.reward = '';
+    if (!quest.contact) quest.contact = '';
+    if (!quest.length) quest.length = '';
+    if (!quest.tier) quest.tier = 'rat';
+    if (quest.status === undefined) quest.status = 'available';
+    if (quest.hidden === undefined) quest.hidden = false;
+  }
+
+  // Add to quests
   quests.push(quest);
-  BASE.push({ ...quest });
-  statuses[quest.id] = 'available';
-  hidden[quest.id] = false;
+  BASE.push(JSON.parse(JSON.stringify(quest)));
+  statuses[quest.id] = quest.status || 'available';
+  hidden[quest.id] = quest.hidden || false;
+  
+  // Set to editing mode and persist
   editing = quest.id;
   persist();
   render();
+  closeAddQuestModal();
 };
 
 // Boot
@@ -870,29 +1142,67 @@ window.publishToBoard = async function() {
   }));
 
   const REPO = 'tScholey/House-of-Iliaster-Quest-Board';
-  const API  = `https://api.github.com/repos/${REPO}/contents/quests.json`;
   const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' };
 
   try {
-    // 1. Get current SHA
-    const metaResp = await fetch(API, { headers });
-    if (!metaResp.ok) throw new Error(`GitHub API ${metaResp.status}: ${await metaResp.text()}`);
-    const { sha } = await metaResp.json();
+    // 1. Upload each quest file individually
+    for (const quest of toPublish) {
+      const API = `https://api.github.com/repos/${REPO}/contents/quests/${quest.id}.json`;
+      const json = JSON.stringify(quest, null, 2);
+      const bytes = new TextEncoder().encode(json);
+      let binary = '';
+      bytes.forEach(b => binary += String.fromCharCode(b));
+      const content = btoa(binary);
 
-    // 2. Encode content (handle non-ASCII safely)
-    const json = JSON.stringify(toPublish, null, 2);
-    const bytes = new TextEncoder().encode(json);
-    let binary = '';
-    bytes.forEach(b => binary += String.fromCharCode(b));
-    const content = btoa(binary);
+      // Get current SHA if file exists
+      let sha;
+      try {
+        const checkResp = await fetch(API, { headers });
+        if (checkResp.ok) {
+          const data = await checkResp.json();
+          sha = data.sha;
+        }
+      } catch (e) {
+        // File doesn't exist yet, no SHA needed
+      }
 
-    // 3. Commit
-    const putResp = await fetch(API, {
+      const putResp = await fetch(API, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({ 
+          message: `Update quest ${quest.id} via DM screen`, 
+          content, 
+          ...(sha && { sha })
+        })
+      });
+      if (!putResp.ok) throw new Error(`Failed to upload ${quest.id}: ${await putResp.text()}`);
+    }
+
+    // 2. Update index.json
+    const indexAPI = `https://api.github.com/repos/${REPO}/contents/quests/index.json`;
+    const indexJson = JSON.stringify(toPublish.map(q => q.id), null, 2);
+    const indexBytes = new TextEncoder().encode(indexJson);
+    let indexBinary = '';
+    indexBytes.forEach(b => indexBinary += String.fromCharCode(b));
+    const indexContent = btoa(indexBinary);
+
+    const metaResp = await fetch(indexAPI, { headers });
+    let indexSha;
+    if (metaResp.ok) {
+      const data = await metaResp.json();
+      indexSha = data.sha;
+    }
+
+    const indexPutResp = await fetch(indexAPI, {
       method: 'PUT',
       headers,
-      body: JSON.stringify({ message: 'Update quest board via DM screen', content, sha })
+      body: JSON.stringify({ 
+        message: 'Update quest index via DM screen', 
+        content: indexContent,
+        ...(indexSha && { sha: indexSha })
+      })
     });
-    if (!putResp.ok) throw new Error(`GitHub API ${putResp.status}: ${await putResp.text()}`);
+    if (!indexPutResp.ok) throw new Error(`Failed to update index: ${await indexPutResp.text()}`);
 
     setStatus('Published. Live board updates in ~1 min.');
   } catch (err) {
