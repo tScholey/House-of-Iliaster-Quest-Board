@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House of Iliaster — Refinement Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #180902;
+    --ink-mid:   #3e2008;
+    --ink-light: #6e4820;
+    --gold:      #9a7010;
+    --gold-dark: #6e4e08;
+    --parch:     #ede0b4;
+    --parch-mid: #e4d49c;
+    --parch-dark:#c8b870;
+    --border:    #a08030;
+    --red-ink:   #7a1010;
+    --wood:      #160c02;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { overflow-x: hidden; }
+
+  body {
+    background-color: var(--wood);
+    background-image: url('wood.avif');
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem 5rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--ink);
+    overflow-x: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Navigation ──────────────────────────────────────────────────────── */
+  .nav-link {
+    position: fixed;
+    top: 1.4rem;
+    left: 1.4rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.92rem;
+    color: var(--parch-mid);
+    text-decoration: none;
+    background: rgba(22, 12, 2, 0.75);
+    border: 1px solid var(--gold-dark);
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.04em;
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── Scroll rollers ──────────────────────────────────────────────────── */
+  .scroll-roller {
+    width: 100%;
+    max-width: 900px;
+    height: 40px;
+    background: linear-gradient(to bottom,
+      #d4aa50 0%, #a07828 25%, #7a5818 50%, #a07828 75%, #d4aa50 100%);
+    border-radius: 8px;
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.65),
+      inset 0 2px 3px rgba(255, 230, 160, 0.45),
+      inset 0 -2px 3px rgba(0, 0, 0, 0.35);
+    position: relative;
+    z-index: 3;
+  }
+  /* End knobs on the roller */
+  .scroll-roller::before,
+  .scroll-roller::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%, #d4a840 0%, #6e4808 70%);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+  }
+  .scroll-roller::before { left: 10px; }
+  .scroll-roller::after  { right: 10px; }
+
+  /* ── Scroll body ─────────────────────────────────────────────────────── */
+  .scroll-body {
+    background-color: var(--parch);
+    background-image:
+      radial-gradient(ellipse at center, transparent 35%, rgba(100, 70, 20, 0.22) 100%),
+      url('parchment.avif');
+    background-size: 100% 100%, cover;
+    background-position: 0 0, center;
+    width: 100%;
+    max-width: 900px;
+    /* Pull body up/down so the rollers sit on top and hide the square corners */
+    margin-top: -20px;
+    margin-bottom: -20px;
+    padding: calc(2.5rem + 20px) 3rem calc(2.5rem + 20px);
+    border-left: 1px solid #b09040;
+    border-right: 1px solid #b09040;
+    box-shadow: 5px 0 14px rgba(0, 0, 0, 0.3), -5px 0 14px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Scroll header ───────────────────────────────────────────────────── */
+  .scroll-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid var(--parch-dark);
+  }
+  .ornament {
+    font-size: 1rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.5em;
+    margin-bottom: 0.6rem;
+  }
+  .scroll-title h1 {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: var(--red-ink);
+    letter-spacing: 0.08em;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.35rem;
+  }
+  .scroll-title p {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  /* ── Score table ─────────────────────────────────────────────────────── */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .score-table thead tr {
+    border-bottom: 2px solid var(--parch-dark);
+  }
+  .score-table th {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.82rem;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .score-table th.col-score { text-align: right; }
+  .score-table th.col-toggle { width: 2.2rem; }
+
+  .score-table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid rgba(160, 120, 40, 0.22);
+    color: var(--ink);
+    vertical-align: middle;
+  }
+  .group-row:hover td { background: rgba(160, 120, 40, 0.07); }
+
+  /* Toggle button */
+  .toggle-btn {
+    background: none;
+    border: 1px solid var(--gold-dark);
+    color: var(--gold-dark);
+    font-family: 'IM Fell English', serif;
+    font-size: 0.95rem;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .toggle-btn:hover { background: rgba(160, 120, 40, 0.15); }
+
+  /* Cell content */
+  .argentum-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+  }
+  .aurelian-name {
+    color: var(--ink-mid);
+    font-style: italic;
+    font-size: 0.87rem;
+  }
+  .score-val {
+    text-align: right;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    display: block;
+  }
+  .score-val.positive { color: var(--gold-dark); }
+  .score-val.negative { color: var(--red-ink); }
+  .score-val.zero     { color: var(--ink-light); }
+
+  .class-badge {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-family: 'IM Fell English', serif;
+    color: var(--ink-mid);
+    background: rgba(160, 120, 40, 0.1);
+    border: 1px solid rgba(160, 120, 40, 0.28);
+    padding: 0.1rem 0.45rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* Member rows */
+  .member-row td {
+    padding: 0.3rem 0.75rem;
+    background: rgba(160, 120, 40, 0.05);
+    color: var(--ink-mid);
+    font-size: 0.85rem;
+    font-style: italic;
+    border-bottom: 1px solid rgba(160, 120, 40, 0.1);
+  }
+  .member-row td.member-cell { padding-left: 3rem; }
+  .member-name::before {
+    content: '↳ ';
+    color: var(--gold-dark);
+    font-style: normal;
+  }
+  .member-row.hidden { display: none; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--ink-light);
+    font-size: 1rem;
+  }
+
+  /* ── Responsive ──────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .scroll-body { padding: 1.5rem 1rem; }
+    .score-table th, .score-table td { padding: 0.4rem 0.4rem; font-size: 0.82rem; }
+    .member-row td.member-cell { padding-left: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<a class="nav-link" href="index.html" onclick="slideBack(event)">← Quest Board</a>
+
+<div class="scroll-roller"></div>
+
+<div class="scroll-body">
+  <div class="scroll-title">
+    <div class="ornament">✦ ✦ ✦</div>
+    <h1>Refinement Standings</h1>
+    <p>House of Iliaster — Guild Records of Argentum Achievement</p>
+  </div>
+
+  <div id="board">
+    <div class="empty-state">Standings are being compiled. Return anon.</div>
+  </div>
+
+</div>
+
+<div class="scroll-roller"></div>
+
+<script>
+// ── Slide-in on page load ────────────────────────────────────────────────
+(function () {
+  const dir = sessionStorage.getItem('navDir');
+  if (dir === 'right') {
+    document.body.style.transform = 'translateX(100vw)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document.body.style.transform = '';
+    }));
+    sessionStorage.removeItem('navDir');
+  }
+})();
+
+// ── Navigate back to quest board ─────────────────────────────────────────
+function slideBack(e) {
+  e.preventDefault();
+  sessionStorage.setItem('navDir', 'left');
+  document.body.style.transform = 'translateX(100vw)';
+  setTimeout(() => { window.location.href = 'index.html'; }, 420);
+}
+
+// ── Utilities ────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function scoreClass(n) {
+  if (n < 0) return 'negative';
+  if (n === 0) return 'zero';
+  return 'positive';
+}
+
+// ── Render standings ─────────────────────────────────────────────────────
+function render(data) {
+  const board = document.getElementById('board');
+
+  // Flatten: { Aurelian: [ { ArgentumName: { ... } }, ... ] }
+  const rows = [];
+  for (const [aurelian, groupsArray] of Object.entries(data)) {
+    for (const groupObj of groupsArray) {
+      const [argentum, info] = Object.entries(groupObj)[0];
+      rows.push({
+        aurelian,
+        argentum,
+        members: info.GroupMembers || [],
+        score:   info.ArgentumRefinementScore ?? 0,
+        cls:     info.ArgentumRefinementClass || ''
+      });
+    }
+  }
+
+  if (rows.length === 0) {
+    board.innerHTML = '<div class="empty-state">Standings are being compiled. Return anon.</div>';
+    return;
+  }
+
+  // Sort by score descending
+  rows.sort((a, b) => b.score - a.score);
+
+  let html = `<table class="score-table">
+    <thead>
+      <tr>
+        <th class="col-toggle"></th>
+        <th>Argentum</th>
+        <th>Aurelian</th>
+        <th>Class</th>
+        <th class="col-score">Score</th>
+      </tr>
+    </thead>
+    <tbody>`;
+
+  rows.forEach((row, i) => {
+    const sc = row.score;
+    const hasMembers = row.members.length > 0;
+    const btn = hasMembers
+      ? `<button class="toggle-btn" id="btn-${i}" onclick="toggle(${i})" title="Show members">+</button>`
+      : '';
+    const sign = sc > 0 ? '+' : '';
+
+    html += `<tr class="group-row">
+      <td>${btn}</td>
+      <td><span class="argentum-name">${esc(row.argentum)}</span></td>
+      <td><span class="aurelian-name">${esc(row.aurelian)}</span></td>
+      <td><span class="class-badge">${esc(row.cls) || '—'}</span></td>
+      <td><span class="score-val ${scoreClass(sc)}">${sign}${sc}</span></td>
+    </tr>`;
+
+    row.members.forEach(member => {
+      html += `<tr class="member-row hidden" data-group="${i}">
+        <td></td>
+        <td class="member-cell" colspan="4"><span class="member-name">${esc(member)}</span></td>
+      </tr>`;
+    });
+  });
+
+  html += '</tbody></table>';
+  board.innerHTML = html;
+}
+
+// ── Toggle member rows ───────────────────────────────────────────────────
+function toggle(i) {
+  const btn = document.getElementById('btn-' + i);
+  const open = btn.textContent === '−';
+  btn.textContent = open ? '+' : '−';
+  document.querySelectorAll(`.member-row[data-group="${i}"]`)
+    .forEach(r => r.classList.toggle('hidden', open));
+}
+
+// ── Load data ────────────────────────────────────────────────────────────
+fetch('refinement.json')
+  .then(r => r.json())
+  .then(data => render(data))
+  .catch(() => { /* keep empty state on missing/invalid file */ });
+</script>
+</body>
+</html>

@@ -23,6 +23,8 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { overflow-x: hidden; }
+
   body {
     background-color: var(--wood);
     background-image: url('wood.avif');
@@ -33,7 +35,28 @@
     padding: 2.5rem 1rem 5rem;
     font-family: Georgia, 'Times New Roman', serif;
     color: var(--ink);
+    overflow-x: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  /* ── Navigation link ─────────────────────────────────────────────────── */
+  .nav-link {
+    position: fixed;
+    top: 1.4rem;
+    right: 1.4rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.92rem;
+    color: var(--parch-mid);
+    text-decoration: none;
+    background: rgba(22, 12, 2, 0.75);
+    border: 1px solid var(--gold-dark);
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.04em;
+    z-index: 100;
+    cursor: pointer;
+    user-select: none;
+  }
+  .nav-link:hover { color: var(--gold); border-color: var(--gold); }
 
   /* ── Header ─────────────────────────────────────────────────────────── 
   .page-header {
@@ -302,6 +325,7 @@
 </head>
 <body>
 
+<a class="nav-link" href="refinement.html" onclick="slideToRefinement(event)">Refinement Board →</a>
 
 <main class="board-frame">
   <div class="filter-bar">
@@ -398,6 +422,28 @@ fetch('quests/index.json')
     document.getElementById('board').innerHTML =
       '<div class="empty">The board could not be reached. Please try again shortly.</div>';
   });
+</script>
+
+<script>
+// ── Slide-in on return from refinement ───────────────────────────────────
+(function () {
+  const dir = sessionStorage.getItem('navDir');
+  if (dir === 'left') {
+    document.body.style.transform = 'translateX(-100vw)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      document.body.style.transform = '';
+    }));
+    sessionStorage.removeItem('navDir');
+  }
+})();
+
+// ── Navigate to refinement board ─────────────────────────────────────────
+function slideToRefinement(e) {
+  e.preventDefault();
+  sessionStorage.setItem('navDir', 'right');
+  document.body.style.transform = 'translateX(-100vw)';
+  setTimeout(() => { window.location.href = 'refinement.html'; }, 420);
+}
 </script>
 </body>
 </html>
