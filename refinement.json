@@ -1,54 +1,60 @@
 {
-  "Kali": [
+  "Amkalinora": [
     {
       "The Aegis": {
         "GroupMembers": ["Syr Heston", "Heidi", "Fragility", "El'Agola \"Swampy\""],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 2338,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "Pine Needles": {
         "GroupMembers": ["Sophia Goldmore", "Theo Finchley", "Fin'si", "Briony"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 289,
+        "ArgentumRefinementClass": "Crested"
       }
     },
     {
       "Daggerhearts": {
         "GroupMembers": ["Raye", "Roze", "Kaina"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1309,
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
       "The Bastion": {
         "GroupMembers": ["Fane Silverhand", "Kai'red", "Ashani", "Doric Stonewater", "Delilah Fleetwing", "Loukas Guard", "Sweetness"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 984,
+        "ArgentumRefinementClass": "Mixed"
       }
     },
     {
       "Stormrazors": {
         "GroupMembers": ["Imogen Crest", "Adam Crest", "Sonia Burnwood"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 23,
+        "ArgentumRefinementClass": "Crested"
       }
-    }
+    },
+    {
+      "New Party": {
+        "GroupMembers": [],
+        "ArgentumRefinementScore": 0,
+        "ArgentumRefinementClass": "Under Review"
+      }
   ],
   "Varkas": [
     {
       "The Right Hand": {
         "GroupMembers": ["Kellin Aske", "Thalai Akinoka", "Angus Sweeper", "Darius Bloodskull"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 2198,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "The Left Hand": {
         "GroupMembers": ["Asada", "Durok Pinkstone", "Lori Rakash", "Ibrahim Broadaxe"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 502,
+        "ArgentumRefinementClass": "Mixed"
       }
     }
   ],
@@ -56,22 +62,22 @@
     {
       "Cleanup": {
         "GroupMembers": ["Montigue Filgrace", "Feris Stonespark", "Esther Glitterlance"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1093,
+        "ArgentumRefinementClass": "Crested"
       }
     },
     {
       "Observation": {
         "GroupMembers": ["Ami", "Phelan Ghosthand", "Kishbillie"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 983,
+        "ArgentumRefinementClass": "Crested"
       }
     },
     {
       "Carriage": {
         "GroupMembers": ["Gideon Wildwind", "Mosharanguto \"Mossy\"", "Heather Campen"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1678,
+        "ArgentumRefinementClass": "Crested"
       }
     }
   ],
@@ -79,22 +85,22 @@
     {
       "Weavetakers": {
         "GroupMembers": ["Irix Vale", "Nessa Coil", "Talven Marr", "Boros Lotterson"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1731,
+        "ArgentumRefinementClass": "Advanced"
       }
     },
     {
       "Weavemakers": {
         "GroupMembers": ["Althryn Kest", "Mirela Guilgood", "Orren Feld", "Caskwright Yuli"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1490,
+        "ArgentumRefinementClass": "Advanced"
       }
     },
     {
       "Weavespeakers": {
         "GroupMembers": ["Lark", "Sister Maelin", "Reticence", "Sir Calder Ash"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 879,
+        "ArgentumRefinementClass": "Developmental"
       }
     }
   ],
@@ -102,22 +108,22 @@
     {
       "The Gilded Quills": {
         "GroupMembers": ["Maritius Hammerlock", "Nil", "Michiko", "Steven Allflower"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1291,
+        "ArgentumRefinementClass": "Special"
       }
     },
     {
       "The Rose Knights": {
         "GroupMembers": ["Vincenzo Chorus", "Oshar-Kili", "Darastrix", "Belial"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1861,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "The Heralds": {
         "GroupMembers": ["Teddy Mercury (Theodore Rosewood)", "Greystone Hardtack", "Roseanna Everclear"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1105,
+        "ArgentumRefinementClass": "Crested"
       }
     }
   ],
@@ -125,29 +131,29 @@
     {
       "Solutions": {
         "GroupMembers": ["Hale Rook", "Seren Vale", "Vincent", "Orrin Pike"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1911,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "Theorems": {
         "GroupMembers": ["Mirel Ash", "Tamsin Coil", "Bram Kessel"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1560,
+        "ArgentumRefinementClass": "Developmental"
       }
     },
     {
       "Corollaries": {
         "GroupMembers": ["Yara Thornroot", "Korr Stonevein"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 2003,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "Decisions": {
         "GroupMembers": ["Elian Forge", "Sael Runeweft", "Varkun Stonetusk", "Pella Ward"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1203,
+        "ArgentumRefinementClass": "Crested"
       }
     }
   ],
@@ -155,22 +161,22 @@
     {
       "The Envenomed Few": {
         "GroupMembers": ["Zashlara", "Velirio Castor", "Ji'kara"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 983,
+        "ArgentumRefinementClass": "Crested"
       }
     },
     {
       "The Snakehands": {
         "GroupMembers": ["Stephen Smith", "Ali Aquissa", "Vanessa Archan"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1408,
+        "ArgentumRefinementClass": "Crested"
       }
     },
     {
       "Sunshine Squad": {
         "GroupMembers": ["Pix Spickwick", "Chelsea Polis", "\"Figgy\""],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1830,
+        "ArgentumRefinementClass": "Elite"
       }
     }
   ],
@@ -178,22 +184,22 @@
     {
       "The Trackers": {
         "GroupMembers": ["Im'aso", "Flickwick Ghostfoot", "Ash Rawfang"],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1835,
+        "ArgentumRefinementClass": "Elite"
       }
     },
     {
       "The Deep Guard": {
         "GroupMembers": ["Raikiri", "Kura", "Liam Hilstop"],
         "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementClass": "Special"
       }
     },
     {
       "The Pathfinders": {
         "GroupMembers": ["\"Thorn\"", "\"Bow\"", "Christoff", "\"Strike\""],
-        "ArgentumRefinementScore": 0,
-        "ArgentumRefinementClass": ""
+        "ArgentumRefinementScore": 1262,
+        "ArgentumRefinementClass": "Crested"
       }
     }
   ]
