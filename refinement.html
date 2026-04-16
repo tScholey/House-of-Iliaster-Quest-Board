@@ -232,7 +232,7 @@
   }
   .member-row td.member-cell { padding-left: 3rem; }
   .member-name::before {
-    content: '↳ ';
+    content: '-';
     color: var(--gold-dark);
     font-style: normal;
   }
@@ -264,9 +264,8 @@
 
 <div class="scroll-body">
   <div class="scroll-title">
-    <div class="ornament">✦ ✦ ✦</div>
     <h1>Refinement Standings</h1>
-    <p>House of Iliaster — Guild Records of Argentum Achievement</p>
+    <p>House of Iliaster - Guild Records of Argentum Achievement</p>
   </div>
 
   <div id="board">
@@ -360,7 +359,7 @@ function render(data) {
       <td>${btn}</td>
       <td><span class="argentum-name">${esc(row.argentum)}</span></td>
       <td><span class="aurelian-name">${esc(row.aurelian)}</span></td>
-      <td><span class="class-badge">${esc(row.cls) || '—'}</span></td>
+      <td><span class="class-badge">${esc(row.cls) || '-'}</span></td>
       <td><span class="score-val ${scoreClass(sc)}">${sign}${sc}</span></td>
     </tr>`;
 
