@@ -87,14 +87,14 @@
       "Weavetakers": {
         "GroupMembers": ["Irix Vale", "Nessa Coil", "Talven Marr", "Boros Lotterson"],
         "ArgentumRefinementScore": 1731,
-        "ArgentumRefinementClass": "Advanced"
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
       "Weavemakers": {
         "GroupMembers": ["Althryn Kest", "Mirela Guilgood", "Orren Feld", "Caskwright Yuli"],
         "ArgentumRefinementScore": 1490,
-        "ArgentumRefinementClass": "Advanced"
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
@@ -117,7 +117,7 @@
       "The Rose Knights": {
         "GroupMembers": ["Vincenzo Chorus", "Oshar-Kili", "Darastrix", "Belial"],
         "ArgentumRefinementScore": 1861,
-        "ArgentumRefinementClass": "Elite"
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
@@ -154,7 +154,7 @@
       "Decisions": {
         "GroupMembers": ["Elian Forge", "Sael Runeweft", "Varkun Stonetusk", "Pella Ward"],
         "ArgentumRefinementScore": 1203,
-        "ArgentumRefinementClass": "Crested"
+        "ArgentumRefinementClass": "Supreme"
       }
     }
   ],
@@ -170,7 +170,7 @@
       "The Snakehands": {
         "GroupMembers": ["Stephen Smith", "Ali Aquissa", "Vanessa Archan"],
         "ArgentumRefinementScore": 1408,
-        "ArgentumRefinementClass": "Crested"
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
