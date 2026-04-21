@@ -31,8 +31,8 @@
     {
       "Stormrazors": {
         "GroupMembers": ["Imogen Crest", "Adam Crest", "Sonia Burnwood"],
-        "ArgentumRefinementScore": 23,
-        "ArgentumRefinementClass": "Crested"
+        "ArgentumRefinementScore": 163,
+        "ArgentumRefinementClass": "Probationary"
       }
     },
     {
@@ -132,8 +132,8 @@
     {
       "Solutions": {
         "GroupMembers": ["Hale Rook", "Seren Vale", "Vincent", "Orrin Pike"],
-        "ArgentumRefinementScore": 1911,
-        "ArgentumRefinementClass": "Elite"
+        "ArgentumRefinementScore": 1711,
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
@@ -177,7 +177,7 @@
       "Sunshine Squad": {
         "GroupMembers": ["Pix Spickwick", "Chelsea Polis", "\"Figgy\""],
         "ArgentumRefinementScore": 1830,
-        "ArgentumRefinementClass": "Elite"
+        "ArgentumRefinementClass": "Supreme"
       }
     }
   ],
@@ -186,7 +186,7 @@
       "The Trackers": {
         "GroupMembers": ["Im'aso", "Flickwick Ghostfoot", "Ash Rawfang"],
         "ArgentumRefinementScore": 1835,
-        "ArgentumRefinementClass": "Elite"
+        "ArgentumRefinementClass": "Supreme"
       }
     },
     {
