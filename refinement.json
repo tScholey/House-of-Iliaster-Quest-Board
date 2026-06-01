@@ -37,7 +37,7 @@
     },
     {
       "Argentum Novus": {
-        "GroupMembers": ["Viper","Cotton","Gustavo Maelstrom"],
+        "GroupMembers": ["Viper","Cotton","Gustavo Maelstrom","Hazel Fletcher"],
         "ArgentumRefinementScore": 0,
         "ArgentumRefinementClass": "Under Review"
       }
@@ -122,7 +122,7 @@
     },
     {
       "The Heralds": {
-        "GroupMembers": ["Teddy Mercury (Theodore Rosewood)", "Greystone Hardtack", "Roseanna Everclear"],
+        "GroupMembers": ["Theodore Rosewood", "Greystone Hardtack", "Roseanna Everclear"],
         "ArgentumRefinementScore": 1105,
         "ArgentumRefinementClass": "Crested"
       }
@@ -175,7 +175,7 @@
     },
     {
       "Sunshine Squad": {
-        "GroupMembers": ["Pix Spickwick", "Chelsea Polis", "\"Figgy\""],
+        "GroupMembers": ["Pix Spickwick", "Chelsea Polis", "Figulboxstrioc"],
         "ArgentumRefinementScore": 1830,
         "ArgentumRefinementClass": "Supreme"
       }
@@ -198,7 +198,7 @@
     },
     {
       "The Pathfinders": {
-        "GroupMembers": ["\"Thorn\"", "\"Bow\"", "Christoff", "\"Strike\""],
+        "GroupMembers": ["Thrack Stormson", "Go'tisha", "Christoff", "Eli Sproutstand"],
         "ArgentumRefinementScore": 1262,
         "ArgentumRefinementClass": "Crested"
       }
