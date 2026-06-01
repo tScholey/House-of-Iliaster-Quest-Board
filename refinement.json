@@ -36,8 +36,8 @@
       }
     },
     {
-      "New Party": {
-        "GroupMembers": [],
+      "Argentum Novus": {
+        "GroupMembers": ["Viper","Cotton","Gustavo Maelstrom"],
         "ArgentumRefinementScore": 0,
         "ArgentumRefinementClass": "Under Review"
       }
