@@ -2,7 +2,7 @@
   "Amkalinora": [
     {
       "The Aegis": {
-        "GroupMembers": ["Syr Heston", "Heidi", "Fragility", "El'Agola \"Swampy\""],
+        "GroupMembers": ["Syr Heston", "Heidi", "Fragility", "El'Agola"],
         "ArgentumRefinementScore": 2338,
         "ArgentumRefinementClass": "Elite"
       }
@@ -76,7 +76,7 @@
     },
     {
       "Carriage": {
-        "GroupMembers": ["Gideon Wildwind", "Mosharanguto \"Mossy\"", "Heather Campen"],
+        "GroupMembers": ["Gideon Wildwind", "Mosharanguto", "Heather Campen"],
         "ArgentumRefinementScore": 1678,
         "ArgentumRefinementClass": "Crested"
       }
