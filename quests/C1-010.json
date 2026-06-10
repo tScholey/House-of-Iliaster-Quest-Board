@@ -11,5 +11,5 @@
   "expires": "Contract lapses at the close of the fishing season",
   "lkUrl": "",
   "status": "available",
-  "hidden": false
+  "hidden": true
 }
