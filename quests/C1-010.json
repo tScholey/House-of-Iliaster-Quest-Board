@@ -10,6 +10,6 @@
   "timeSensitive": true,
   "expires": "Contract lapses at the close of the fishing season",
   "lkUrl": "",
-  "status": "available",
-  "hidden": true
+  "status": "taken",
+  "hidden": false
 }
