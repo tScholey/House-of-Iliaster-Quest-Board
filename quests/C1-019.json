@@ -1,0 +1,15 @@
+{
+  "id": "C1-019",
+  "tier": "rat",
+  "title": "A Resolution to the Quarantine of Houndstown Street",
+  "summary": "Houndstown Street, specifically the Fresh and Flaky Bakery and the Omari Family Delicatessant, have been under quarantine for a few days due to an unkown creature burrowing beneath it.\n\nThe Dorel City Guard have requested aid in clearing these out as there appears to be some magical elements to the creatures which have been described as large insects.",
+  "completion": "The quarantine is lifted.",
+  "reward": "25 sp, plus a voucher for a tier 1 magical item from the guild",
+  "contact": "Henry Stillwater, Chief Guard of the Box District",
+  "length": "One to Two Days",
+  "timeSensitive": false,
+  "expires": "",
+  "lkUrl": "",
+  "status": "available",
+  "hidden": false
+}
