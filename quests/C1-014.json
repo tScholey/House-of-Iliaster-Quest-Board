@@ -10,6 +10,6 @@
   "timeSensitive": false,
   "expires": "",
   "lkUrl": "",
-  "status": "available",
-  "hidden": true
+  "status": "taken",
+  "hidden": false
 }
