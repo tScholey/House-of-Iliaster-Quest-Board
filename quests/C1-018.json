@@ -4,12 +4,12 @@
   "title": "In Service of Her Grace Alderwoman Castano",
   "summary": "Due to recent rumours of impropriety the Alderwoman Castano has requested that the guild stay and defend her manor for the night while she is out of town with her private security detail.\n\nBased on the House's information gathering it is believed that a local thieves guild may be planning to break in to gather information for a rival council member. Should this occur, it is strongly encouraged to extract any information you can from the would-be thieves.",
   "completion": "The Night Passes without Incident",
-  "reward": "1gp per member",
+  "reward": "2gp per member",
   "contact": "Albert McJeeves, Groundskeeper",
   "length": "One Night",
   "timeSensitive": true,
   "expires": "",
   "lkUrl": " https://www.legendkeeper.com/app/cmk5vt9bw62y10jo1857n5cmk/uxyslzh6/",
   "status": "available",
-  "hidden": true
+  "hidden": false
 }
